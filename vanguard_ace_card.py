@@ -25,7 +25,7 @@ for product in products.each():
     if ('-D-' in product.val()['title']) and ('Ragnarok' not in product.val()['title']) and ('Touken' not in product.val()['title']):
             cards = product.val()['cards']
             for card in cards:
-                if (('(VC)' in card['effect']) and int(card['grade']) >= 3) and 'RRR' in card['rarity'] and 'Normal Unit' in card['type'] and 'Standard' in card['regulation']:
+                if ((('[AUTO](VC)' in card['effect']) or ('[ACT](VC)' in card['effect']) or ('[CONT](VC)' in card['effect'])) and int(card['grade']) >= 3) and 'Normal Unit' in card['type'] and 'Standard' in card['regulation']:
                     print(card['name'])
                     card = Card(card['image'], card['name'], card['type'], card['nation'], card['race'], card['grade'], card['power'], card['critical'], card['shield'], card['skill'], card['effect'], card['regulation'], card['number'], card['rarity'])
                     database.child('Vanguard Ace Card').push(card.__dict__)
